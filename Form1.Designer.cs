@@ -46,6 +46,10 @@
             this.clear = new System.Windows.Forms.Button();
             this.send = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.portOutClear = new System.Windows.Forms.Button();
+            this.cmdOutClear = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.searchPort = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // portNum
@@ -84,9 +88,9 @@
             // 
             // connect
             // 
-            this.connect.Location = new System.Drawing.Point(88, 246);
+            this.connect.Location = new System.Drawing.Point(75, 274);
             this.connect.Name = "connect";
-            this.connect.Size = new System.Drawing.Size(200, 51);
+            this.connect.Size = new System.Drawing.Size(130, 57);
             this.connect.TabIndex = 4;
             this.connect.Text = "连接";
             this.connect.UseVisualStyleBackColor = true;
@@ -140,24 +144,26 @@
             // HEXbutton
             // 
             this.HEXbutton.AutoSize = true;
-            this.HEXbutton.Location = new System.Drawing.Point(65, 198);
+            this.HEXbutton.Location = new System.Drawing.Point(75, 207);
             this.HEXbutton.Name = "HEXbutton";
             this.HEXbutton.Size = new System.Drawing.Size(77, 28);
             this.HEXbutton.TabIndex = 9;
             this.HEXbutton.Text = "HEX";
             this.HEXbutton.UseVisualStyleBackColor = true;
+            this.HEXbutton.CheckedChanged += new System.EventHandler(this.HEXbutton_CheckedChanged);
             // 
             // TEXTbutton
             // 
             this.TEXTbutton.AutoSize = true;
             this.TEXTbutton.Checked = true;
-            this.TEXTbutton.Location = new System.Drawing.Point(175, 198);
+            this.TEXTbutton.Location = new System.Drawing.Point(202, 207);
             this.TEXTbutton.Name = "TEXTbutton";
             this.TEXTbutton.Size = new System.Drawing.Size(113, 28);
             this.TEXTbutton.TabIndex = 10;
             this.TEXTbutton.TabStop = true;
             this.TEXTbutton.Text = "字符串";
             this.TEXTbutton.UseVisualStyleBackColor = true;
+            this.TEXTbutton.CheckedChanged += new System.EventHandler(this.TEXTbutton_CheckedChanged);
             // 
             // InforOut
             // 
@@ -183,9 +189,11 @@
             this.cmd.Location = new System.Drawing.Point(65, 372);
             this.cmd.Multiline = true;
             this.cmd.Name = "cmd";
+            this.cmd.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.cmd.Size = new System.Drawing.Size(282, 133);
             this.cmd.TabIndex = 13;
             this.cmd.Text = "input cmd";
+            this.cmd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmd_KeyPress);
             // 
             // clear
             // 
@@ -216,11 +224,44 @@
             this.label1.TabIndex = 16;
             this.label1.Text = "Designed by Ronnri. For homework only. ALL RIGHTS RESERVERED.";
             // 
+            // portOutClear
+            // 
+            this.portOutClear.Location = new System.Drawing.Point(505, 45);
+            this.portOutClear.Name = "portOutClear";
+            this.portOutClear.Size = new System.Drawing.Size(131, 46);
+            this.portOutClear.TabIndex = 17;
+            this.portOutClear.Text = "清空";
+            this.portOutClear.UseVisualStyleBackColor = true;
+            this.portOutClear.Click += new System.EventHandler(this.portOutClear_Click);
+            // 
+            // cmdOutClear
+            // 
+            this.cmdOutClear.Location = new System.Drawing.Point(457, 320);
+            this.cmdOutClear.Name = "cmdOutClear";
+            this.cmdOutClear.Size = new System.Drawing.Size(131, 46);
+            this.cmdOutClear.TabIndex = 18;
+            this.cmdOutClear.Text = "清空";
+            this.cmdOutClear.UseVisualStyleBackColor = true;
+            this.cmdOutClear.Click += new System.EventHandler(this.cmdOutClear_Click);
+            // 
+            // searchPort
+            // 
+            this.searchPort.Location = new System.Drawing.Point(211, 274);
+            this.searchPort.Name = "searchPort";
+            this.searchPort.Size = new System.Drawing.Size(136, 57);
+            this.searchPort.TabIndex = 19;
+            this.searchPort.Text = "查找";
+            this.searchPort.UseVisualStyleBackColor = true;
+            this.searchPort.Click += new System.EventHandler(this.searchPort_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1106, 610);
+            this.ClientSize = new System.Drawing.Size(1127, 651);
+            this.Controls.Add(this.searchPort);
+            this.Controls.Add(this.cmdOutClear);
+            this.Controls.Add(this.portOutClear);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.send);
             this.Controls.Add(this.clear);
@@ -236,6 +277,7 @@
             this.Controls.Add(this.connect);
             this.Controls.Add(this.portBox);
             this.Controls.Add(this.portNum);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
@@ -265,6 +307,10 @@
         private System.Windows.Forms.Button clear;
         private System.Windows.Forms.Button send;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button portOutClear;
+        private System.Windows.Forms.Button cmdOutClear;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Button searchPort;
     }
 }
 
